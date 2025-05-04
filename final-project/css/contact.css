@@ -1,0 +1,175 @@
+
+body{
+    margin-top:10%;
+}
+.contact-section {
+    max-width: 900px;
+    margin: auto;
+    padding: 140px 20px;
+    text-align: center;
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    transform: translateY(50px);
+    color: white;
+    font-family: Poppins, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh; 
+
+}
+
+.contact-section h1 {
+    font-size: 42px;
+    margin-bottom: 40px;
+    animation: fadeIn 1.2s ease-in forwards;
+    opacity: 0;
+}
+
+.contact-box {
+    
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1.4s ease-in forwards;
+    opacity: 0;
+    width: 60%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 10%;
+}
+select, input[type="tel"] {
+    padding: 1px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    width: 100%;
+  }
+  select {
+    padding: 1px;
+    margin-left: 40px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    width: 45%;
+  }
+
+.contact-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.contact-box input,
+.contact-box textarea {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 16px;
+    resize: none;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+.contact-box input::placeholder,
+.contact-box textarea::placeholder {
+    color: #ccc;
+}
+
+
+.contact-box button {
+    padding: 15px;
+    background-color: #00BFFF;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+}
+
+.contact-box button:hover {
+    background-color: #0099cc;
+}
+
+.contact-box label {
+    display: block; 
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.phone-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 10px; 
+    width: 100%;
+}
+
+.phone-group select,
+.phone-group input {
+    width: 100%; 
+    max-width: 300px; 
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.phone-group select {
+    text-align: center;
+    width: 40%;
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-box {
+        width: 80%; 
+        margin-top: 60px; 
+        padding: 30px;
+    }
+
+    .contact-section h1 {
+        font-size: 36px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-box {
+        width: 90%; 
+        padding: 20px; 
+    }
+
+    .contact-section h1 {
+        font-size: 28px; 
+    }
+}

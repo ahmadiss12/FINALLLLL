@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Car Shop</title>
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
+    <script src="https://kit.fontawesome.com/19109bd9c5.js" crossorigin="anonymous"></script>
+    <link  href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+</head>
+<body style="background: linear-gradient(300deg, #00BFFF 30%, #000000 100%); color: hwb(192 65% 9%); font-family: Poppins;">
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <img src="image/12.png" alt="logo">
+        </div>
+        <ul id="menuList">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="product.html">Product</a></li>
+            <li id="login-link"><a href="login.html">Login</a></li>
+            <li id="user-menu" style="display: none;">
+                <a href="#" id="user-button">User <i class="fa-solid fa-caret-down"></i></a>
+                <ul id="user-dropdown" style="display: none;">
+                    <li><a href="dashboard.html" id="dashboard-link" style="display: none;">Dashboard</a></li>
+                    <li><a href="#" id="logout">Logout</a></li>
+                </ul>
+            </li>
+            <div id="cart-icon">
+                <i class="ri-shopping-bag-line"></i>
+                <span class="cart-item-count"></span>
+            </div>
+        </ul>
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>      
+    </nav>
+
+    <div class="about-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Welcome to Car Shop</h1>
+                <p>Your trusted partner in finding the perfect car since 2010</p>
+            </div>
+        </section>
+
+        <!-- Company History -->
+        <section class="history-section">
+            <h2>Our History</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="year">2010</div>
+                    <div class="content">
+                        <h3>Foundation</h3>
+                        <p>Car Shop was founded with a vision to revolutionize the car buying experience.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">2015</div>
+                    <div class="content">
+                        <h3>Expansion</h3>
+                        <p>Expanded to multiple locations across the country, serving more customers.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">2018</div>
+                    <div class="content">
+                        <h3>Innovation</h3>
+                        <p>Launched our online platform, making car shopping easier than ever.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">2023</div>
+                    <div class="content">
+                        <h3>Today</h3>
+                        <p>Continuing to grow and serve customers with the best car buying experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Values -->
+        <section class="mission-section">
+            <h2>Our Mission & Values</h2>
+            <div class="mission-content">
+                <div class="mission-card">
+                    <i class="ri-user-heart-line"></i>
+                    <h3>Customer First</h3>
+                    <p>We prioritize our customers' needs and satisfaction above all else.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="ri-shield-check-line"></i>
+                    <h3>Quality Assurance</h3>
+                    <p>Every car we sell meets our strict quality standards.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="ri-hand-coin-line"></i>
+                    <h3>Fair Pricing</h3>
+                    <p>We believe in transparent and competitive pricing.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="ri-team-line"></i>
+                    <h3>Expert Team</h3>
+                    <p>Our team of professionals is here to help you find the perfect car.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="image/ceo-1.png" alt="Mahdi Marmar">
+                    <h3>Mahdi Marmar</h3>
+                    <p>CEO & Founder</p>
+                </div>
+                <div class="team-member">
+                    <img src="image/ceo-3.png" alt="Ahmad ismael">
+                    <h3>Ahmad ismael</h3>
+                    <p>Sales Manager</p>
+                </div>
+                <div class="team-member">
+                    <img src="image/ceo-2.png" alt="Hussein Najdi">
+                    <h3>Hussein Najdi</h3>
+                    <p>Service Director</p>
+                </div>
+             
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials-section">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial">
+                    <div class="quote">"The best car buying experience I've ever had. The team was professional and helpful."</div>
+                    <div class="author">- Hussein Najdi</div>
+                </div>
+                <div class="testimonial">
+                    <div class="quote">"Found my dream car at a great price. The service was exceptional!"</div>
+                    <div class="author">- Mahdi Marmar</div>
+                </div>
+                <div class="testimonial">
+                    <div class="quote">"Highly recommended! The team went above and beyond to help me find the perfect car."</div>
+                    <div class="author">- Ahmad Ismael</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="footer">
+        <div class="footer-1">
+            <div class="footer-logo">
+                <img src="image/12.png" alt="logo">
+                <p>We Don't Just Follow Trends; We Create Buzz</p>
+            </div>
+            <div class="company">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="services.php">Services</a></li>
+                    <li><a href="courses.php">Courses</a></li>
+                    <li><a href="contact-us.php">Contact</a></li>
+                </ul>
+            </div>
+            <div class="headquaters">
+                <h4>Headquaters</h4>
+                <p>Baabda, Lebanon</p>
+                <span>info@MHA.gmail.com</span>
+                <span>(+961) 00 00 00</span>
+            </div>
+            <div class="social-media">
+                <h4>Social Media</h4>
+                <p>Follow us on social media!</p>
+                <div class="social-media-icons">
+                    <a href="https://www.facebook.com">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.whatsapp.com">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        <div class="footer-2">
+            <p>© 2025 MHA.com</p>
+        </div>
+    </div>
+    
+    
+    
+    <!-- Scripts -->
+    <script src="js/nav.js"></script>
+    <script src="js/about.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

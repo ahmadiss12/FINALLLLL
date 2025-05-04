@@ -1,0 +1,53 @@
+{
+    "shop": {
+      "sectionTitle": "Shop Products",
+      "products": [
+        {
+          "title": "Toyota Corolla",
+          "image": "image/img6.jpg",
+          "price": 20000
+        },
+        {
+          "title": "Ford Mustang",
+          "image": "image/img7.jpg",
+          "price": 35000
+        },
+        {
+          "title": "Tesla Model 3",
+          "image": "image/img8.jpg",
+          "price": 45000
+        },
+        {
+          "title": "Honda Civic",
+          "image": "image/img9.jpg",
+          "price": 22000
+        },
+        {
+          "title": "Chevrolet Camaro",
+          "image": "image/img10.jpg",
+          "price": 28000
+        },
+        {
+          "title": "BMW X5",
+          "image": "image/img11.jpg",
+          "price": 60000
+        },
+        {
+          "title": "Audi Q7",
+          "image": "image/img12.jpg",
+          "price": 70000
+        },
+        {
+          "title": "Mercedes-Benz GLE",
+          "image": "image/img16.jpg",
+          "price": 75000
+        },
+        {
+          "title": "Porsche Cayenne",
+          "image": "image/img14.jpg",
+          "price": 85000
+        }
+      ]
+    }
+  }
+  

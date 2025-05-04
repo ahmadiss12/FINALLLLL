@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Switcher</title>
+
+  <!-- Icons -->
+
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/nav.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+
+    .main-nav {
+      background: #fff;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+    }
+
+    .main-nav .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main-nav .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .main-nav .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .main-nav .nav-links a {
+      color: #333;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .main-nav .nav-links a:hover {
+      background: #f0f0f0;
+      color: #007bff;
+    }
+
+    .main-nav .nav-links a.active {
+      color: #007bff;
+      background: #f0f0f0;
+    }
+
+    .gsc_container {
+      max-width: 1200px;
+      margin: 80px auto 0;
+      padding: 20px;
+    }
+
+    .category-nav {
+      background: #fff;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 60px;
+      z-index: 99;
+      margin-bottom: 20px;
+    }
+
+    .main-btns {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .main-btns button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #ddd;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .main-btns button.main-btns-active {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .section {
+      min-height: 100vh;
+      padding: 40px 0;
+      scroll-margin-top: 120px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .imageSection {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .image-wrapper {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .image-wrapper img:hover {
+      transform: scale(1.02);
+    }
+
+    .image-wrapper .caption {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .color-btns {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .color-btns button {
+      width: 35px;
+      height: 35px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      outline: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .color-btns button:hover {
+      transform: scale(1.1);
+    }
+
+    .color-btns button.active {
+      outline: 2px solid #007bff;
+    }
+
+    @media (max-width: 600px) {
+      .main-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .main-btns button {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .image-wrapper img {
+        max-width: 100%;
+      }
+      
+      .color-btns button {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .view360 {
+      position: relative;
+      height: 600px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      --progress-bar-color: #007bff;
+      --progress-bar-height: 4px;
+      background: transparent;
+    }
+
+    .zoom-controls {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1;
+    }
+
+    .zoom-controls button {
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .zoom-controls button:hover {
+      background: white;
+      transform: scale(1.1);
+    }
+
+    .zoom-controls button i {
+      font-size: 20px;
+      color: #333;
+    }
+
+    .zoom-level {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: #333;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    nav {
+      position: relative;
+}
+
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+        <img src="image/12.png" alt="logo">
+    </div>
+    <ul id="menuList">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li id="login-link"><a href="login.html">Login</a></li>
+        <li id="user-menu" style="display: none;">
+            <a href="#" id="user-button">User <i class="fa-solid fa-caret-down"></i></a>
+            <ul id="user-dropdown" style="display: none;">
+                <li><a href="dashboard.html" id="dashboard-link" style="display: none;">Dashboard</a></li>
+                <li><a href="#" id="logout">Logout</a></li>
+            </ul>
+        </li>
+        <div id="cart-icon">
+            <i class="ri-shopping-bag-line"></i>
+            <span class="cart-item-count"></span>
+        </div>
+    </ul>
+    <div class="menu-icon">
+        <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+    </div>      
+  </nav>
+  <div class="main-nav">
+    <div class="container">
+      <div class="nav-links">
+        <a href="#exterior">Exterior</a>
+        <a href="#interior">Interior</a>
+        <a href="#view360">360° View</a>
+        <a href="#colors">Colors</a>
+      </div>
+    </div>
+</div>
+<div class="gsc_container">
+  <section id="exterior" class="section">
+    <h2 class="section-title">Exterior</h2>
+    <div class="exterior">
+      <div class="image-wrapper">
+        <img src="image/1.jpg" alt="">
+        <div class="caption">BMW X5 2023 Front View</div>
+      </div>
+      <div class="image-wrapper">
+        <img src="image/2.jpg" alt="">
+        <div class="caption">BMW X5 2023 Side View</div>
+      </div>
+      <div class="image-wrapper">
+        <img src="image/3.jpg" alt="">
+        <div class="caption">BMW X5 2023 Rear left view</div>
+      </div>
+      <div class="image-wrapper">
+        <img src="image/4.jpg" alt="">
+        <div class="caption">BMW X5 2023 Front View</div>
+      </div>
+      <div class="image-wrapper">
+        <img src="image/5.jpg" alt="">
+        <div class="caption">BMW X5 2023 rear view</div>
+      </div>
+      <div class="image-wrapper">
+        <img src="image/6.jpg" alt="">
+        <div class="caption">BMW X5 2023 exterior view</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="interior" class="section">
+    <h2 class="section-title">Interior</h2>
+    <div class="interior">
+      <div class="image-wrapper">
+        <img src="image/9.jpg" alt="">
+        <div class="caption">BMW X5 2023 steering wheel</div>
+      </div>
+      <div class="image-wrapper">
+        <img src="image/10.jpg" alt="">
+        <div class="caption">BMW X5 2023 ambient lighting view</div>
+      </div>
+      <div class="image-wrapper">
+        <img src="image/11.jpg" alt="">
+        <div class="caption">BMW X5 2023 sun roof view</div>
+      </div>
+      <div class="image-wrapper">
+        <img src="image/121.jpg" alt="">
+        <div class="caption">BMW X5 2023 rear seats</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="view360" class="section">
+    <h2 class="section-title">360° View</h2>
+    <div class="view360">
+      <div class="zoom-level">Zoom: 100%</div>
+      <model-viewer 
+        src="AnyConv.com__Toyota_GRSupra_2020_Modified_CSB.glb" 
+        alt="A 3D model of Toyota GR Supra"
+        auto-rotate
+        camera-controls
+        ar
+        style="width: 100%; height: 100%;">
+      </model-viewer>
+      <div class="zoom-controls">
+        <button id="zoomIn" title="Zoom In">
+          <i class="ri-zoom-in-line"></i>
+        </button>
+        <button id="zoomOut" title="Zoom Out">
+          <i class="ri-zoom-out-line"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="colors" class="section">
+    <h2 class="section-title">Colors</h2>
+    <div class="colors">
+      <div class="image-wrapper">
+        <img id="colorImage" src="image/13.jpg" alt="">
+        <div class="caption">Color Variant: Default</div>
+      </div>
+      <div class="color-btns">
+        <button class="active" style="background-color: rgb(73, 77, 78);" data-img="image/13.jpg"></button>
+        <button style="background-color: rgb(190, 190, 190);" data-img="image/14.jpg"></button>
+        <button style="background-color: rgb(0, 60,128);" data-img="image/15.jpg"></button>
+        <button style="background-color: rgb(61, 65, 68);" data-img="image/16.jpg"></button>
+        <button style="background-color: rgb(25, 24, 29);" data-img="image/17.jpg"></button>
+        <button style="background-color: rgb(65,102,110);" data-img="image/18.jpg"></button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+// Smooth scrolling for navigation links
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    const targetSection = document.querySelector(targetId);
+    
+    if (targetSection) {
+      targetSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Update active navigation link based on scroll position bas la ybayin aya section mna2yin
+
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    const scrollPosition = window.scrollY;
+    
+    if (scrollPosition >= sectionTop - 200 && scrollPosition < sectionTop + sectionHeight - 200) {
+      const currentId = '#' + section.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === currentId) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+});
+
+// Color buttons functionality
+const colorButtons = document.querySelectorAll('.color-btns button');
+const colorImage = document.getElementById('colorImage');
+
+colorButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    colorButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const newSrc = btn.getAttribute('data-img');
+    colorImage.src = newSrc;
+  });
+});
+
+// Zoom Controls
+const zoomIn = document.getElementById('zoomIn');
+const zoomOut = document.getElementById('zoomOut');
+const zoomLevel = document.querySelector('.zoom-level');
+const modelViewer = document.querySelector('model-viewer');
+let currentZoom = 100;
+
+zoomIn.addEventListener('click', () => {
+  if (currentZoom > 50) {
+    currentZoom -= 10;
+    modelViewer.cameraOrbit = `0deg 75deg ${currentZoom}%`;
+    updateZoomLevel();
+  }
+});
+
+zoomOut.addEventListener('click', () => {
+  if (currentZoom < 150) {
+    currentZoom += 10;
+    modelViewer.cameraOrbit = `0deg 75deg ${currentZoom}%`;
+    updateZoomLevel();
+  }
+});
+
+function updateZoomLevel() {
+  zoomLevel.textContent = `Zoom: ${150-currentZoom}%`;
+}
+</script>
+
+<!-- Required for <model-viewer> -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+</body>
+</html>

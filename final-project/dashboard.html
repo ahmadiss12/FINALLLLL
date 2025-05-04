@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Car Shop</title>
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://kit.fontawesome.com/19109bd9c5.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+</head>
+<body>
+    <nav style="position: relative;">
+        <a href="index.html" class="logo">
+            <img src="image/12.png" alt="logo">
+        </a>
+        <ul id="menuList">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="product.html">Product</a></li>
+            <li id="login-link"><a href="login.html">Login</a></li>
+            <li id="user-menu" style="display: none">
+                <a href="#" id="user-button">User <i class="fa-solid fa-caret-down"></i></a>
+                <ul id="user-dropdown">
+                    <li><a href="#" id="logout">Logout</a></li>
+                </ul>
+            </li>
+            <div id="cart-icon">
+                <i class="ri-shopping-bag-line"></i>
+                <span class="cart-item-count"></span>
+            </div>
+        </ul>
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+        </div>      
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Admin Dashboard</h1>
+            <div class="search-container">
+                <a href="add-car.html" class="add-car-btn">Add New Car</a>
+            </div>
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <i class="ri-car-line"></i>
+                    <div class="stat-info">
+                        <h3>Total Cars</h3>
+                        <p id="total-cars">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="ri-user-line"></i>
+                    <div class="stat-info">
+                        <h3>Total Users</h3>
+                        <p id="total-users">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="ri-shopping-cart-line"></i>
+                    <div class="stat-info">
+                        <h3>Total Orders</h3>
+                        <p id="total-orders">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <div class="dashboard-section">
+                <h2>Recent Cars</h2>
+                <div class="table-container">
+                    <table id="recent-cars">
+                        <thead>
+                            <tr>
+                                <th>Car Name</th>
+                                <th>Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Cars will be loaded here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="dashboard-section">
+                <h2>Recent Users</h2>
+                <div class="table-container">
+                    <table id="recent-users">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Users will be loaded here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-1">
+            <div class="footer-logo">
+                <img src="image/12.png" alt="logo">
+                <p>We Don't Just Follow Trends; We Create Buzz</p>
+            </div>
+            <div class="company">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="services.php">Services</a></li>
+                    <li><a href="courses.php">Courses</a></li>
+                    <li><a href="contact-us.php">Contact</a></li>
+                </ul>
+            </div>
+            <div class="headquaters">
+                <h4>Headquaters</h4>
+                <p>Baabda, Lebanon</p>
+                <span>info@MHA.gmail.com</span>
+                <span>(+961) 00 00 00</span>
+            </div>
+            <div class="social-media">
+                <h4>Social Media</h4>
+                <p>Follow us on social media!</p>
+                <div class="social-media-icons">
+                    <a href="https://www.facebook.com">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.whatsapp.com">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-2">
+            <p>© 2025 MHA.com</p>
+        </div>
+    </div>
+
+    <script src="js/nav.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html> 
